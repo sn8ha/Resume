@@ -1,0 +1,83 @@
+% !TeX root = Main.tex
+% This file is included by Main.tex; no \documentclass here
+
+% Package imports
+% Improve copy/paste and ATS text extraction
+\usepackage{cmap}
+\ifdefined\pdfglyphtounicode
+    \input{glyphtounicode}
+\fi
+\ifdefined\pdfgentounicode
+    \pdfgentounicode=1
+\fi
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+
+% Optional: reduce ligature usage to avoid extraction artifacts
+\IfFileExists{microtype.sty}{%
+    \usepackage{microtype}
+    \ifdefined\pdftexversion
+        \DisableLigatures{encoding = *, family = * }
+    \fi
+}{}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Hyperlink setup
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Make PDF bookmarks stable and reduce rerun warnings
+\usepackage{bookmark}
+
+% Suppress harmless rerunfilecheck warnings if 'silence' is available.
+% If not, define a no-op to avoid interactive prompts or stray text.
+\makeatletter
+\IfFileExists{silence.sty}{%
+    \usepackage{silence}%
+    \WarningFilter{rerunfilecheck}{File `Main.out' has changed}%
+    \WarningFilter{rerunfilecheck}{Rerun to get outlines right}%
+}{%
+    \providecommand\WarningFilter[2]{}%
+}
+\makeatother
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}

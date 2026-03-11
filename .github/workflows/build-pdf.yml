@@ -1,0 +1,38 @@
+name: Build Resume PDF
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Compile LaTeX to PDF
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: Main.tex
+
+    - name: Rename PDF
+      run: |
+        mv Main.pdf "Sneha V Ajesh (Resume).pdf"
+
+    - name: Upload PDF as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Sneha V Ajesh (Resume)
+        path: "Sneha V Ajesh (Resume).pdf"
+
+    - name: Create Release and upload PDF
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v2
+      with:
+        files: "Sneha V Ajesh (Resume).pdf"
