@@ -1,0 +1,14 @@
+% !TeX root = ../../Main.tex
+\resumeProject
+  {NeuroSentinel}
+  {Tools: Python, PyTorch, Scapy, Streamlit, scikit-learn, SQLite}
+  {March 2026}
+  {{} }
+
+    \resumeItemListStart
+      \item Engineered a \textbf{PyTorch Behavioral Autoencoder} (20-feature input, 4-dimensional latent space; encoder with BatchNorm and Dropout) trained exclusively on benign network traffic to detect intrusions via reconstruction error, requiring no labeled attack data at inference time.
+      \item Built a \textbf{multi-threaded live packet capture engine} using Scapy that aggregates raw packets into 20 engineered flow features (SYN/ACK/RST/PSH flags, inter-arrival time statistics, packet and byte rates) and scores each flow every 5 seconds with a 4-tier severity classifier (NORMAL / LOW / HIGH / CRITICAL).
+      \item Designed a \textbf{per-entity adaptive threshold} system that computes 95th-percentile reconstruction-error baselines per destination port from benign traffic and persists entity profiles in SQLite, enabling traffic-type-aware anomaly detection.
+      \item Implemented a \textbf{multi-stage ransomware kill-chain detector} that identifies C2 beaconing (periodic HTTP/S connections with coefficient of variation \textless{} 0.4), internal reconnaissance (SMB/RDP/SSH port scanning), and lateral movement, triggering automatic host quarantine upon full-chain detection.
+      \item Developed a \textbf{SOAR (Security Orchestration, Automation and Response) module} that auto-dispatches tiered responses -- alert logging (LOW), firewall rule staging pending SOC approval (HIGH), and host quarantine via database status update (CRITICAL) -- alongside a real-time Streamlit SOC dashboard with live threat feed, per-entity anomaly trend charts, and feature-level attribution.
+    \resumeItemListEnd
